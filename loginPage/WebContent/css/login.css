@@ -1,0 +1,88 @@
+@import "../css/font.css";
+body {
+	/* background-image:url("https://www.wondericon.com/images/intro-background-dark.png"); */
+	background-image: url("../images/5.jpg");
+	/* background-image:url("https://wallpapercave.com/wp/wp7488412.jpg"); */
+	background-repeat: no-repeat;
+	 background-size: cover; 
+	 background-color: grey;
+	 background-blend-mode: multiply;
+	/* background:#000 */
+}
+
+.container {
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	text-align: center;
+	margin-top: 1%;
+	font-size: 30px;
+	/* color: #FEDD76; */
+	 color:RGB(245, 158, 28);
+	float: left;
+	padding-right: 50px;
+}
+
+.container h3 {
+	margin-top: 5%;
+	/* color: #FFCCCC; */
+    COLOR:RGB(255, 237, 67);
+	text-transform: uppercase;
+	font-family:Comic Sans MS;
+	/*background: rgb(0, 0, 0, 0.4);*/
+	
+}
+
+form {
+	/*background: rgb(0, 0, 0, 0.3);*/
+	padding: 5%;
+}
+
+form input {
+	width: 50%;
+	height: 25px;
+	font-family: 'Lemon', cursive;
+	
+	/* margin-top:7%; */
+}
+
+form input :focus {
+	border: 0;
+	box-shadow: none;
+}
+
+form label {
+	color: #ccf2ff;
+	font-weight: 900;
+	font-size: 35px;
+	text-transform: uppercase;
+	font-family: 'Bangers', cursive;
+	letter-spacing:10px;
+	/* -webkit-text-stroke: 1px red; */
+}
+
+form a {
+	color: RGB(0, 196, 197);
+	text-decoration: none;
+}
+
+form a:hover {
+	color: Red;
+}
+
+form #submit {
+	width: 30%;
+	font-weight: 900;
+	font-size: 22px;
+	background-color: #ccf2ff;
+	border: none;
+	border-radius: 10px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}
+
+form #submit:hover {
+	background-color: #66CC66;
+	color: #000;
+}
+

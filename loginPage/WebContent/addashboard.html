@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+  
+  <nav class="navbar navbar-expand-sm justify-content-end"style="background-color:#8FC2BC">
+  <ul class="navbar-nav">
+    <li class="nav-item float-end me-3">
+      <button type="button" class="btn text-dark bg-light">Profile</button>
+    </li>
+    <li class="nav-item float-end me-3">
+      <button type="button" class="btn text-dark bg-light">Logout</button>
+    </li>
+    </ul>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-2">
+          <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
+            <li class="nav-item mt-4" >
+              <button
+                class="nav-link active w-100"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#Events"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                Events
+              </button>
+            </li>
+            <li class="nav-item mt-4" role="presentation">
+              <button
+                class="nav-link w-100"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#users"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Users
+              </button>
+            </li>
+            <li class="nav-item mt-4" role="presentation">
+              <button
+                class="nav-link w-100"
+                id="messages-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#booking"
+                type="button"
+                role="tab"
+                aria-controls="messages"
+                aria-selected="false"
+              >
+                Booking
+              </button>
+            </li>
+            <li class="nav-item mt-4" role="presentation">
+              <button
+                class="nav-link w-100"
+                id="settings-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#settings"
+                type="button"
+                role="tab"
+                aria-controls="settings"
+                aria-selected="false"
+              >
+                Settings
+              </button>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Events tabs -->
+        <div class="col-lg-8" style="margin-left:10%">
+          <div class="tab-content">
+            <div class="tab-pane active" id="Events" role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+            <h2 class="text-center mt-3">Events</h2>
+            <table border="1">
+            
+			<tr>
+			<thead>
+			<th>id</th>
+			<th>Event_name</th>
+			<th>Event_price</th>
+			<th>Action</th>
+			</thead>
+			</tr> 
+			           
+            </table>
+            <button type="button" class="btn btn-primary mt-3 w-100" onclick="eventView()">View Events</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Delete Events</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Update Events</button>
+              
+            </div>
+            
+            
+            <div
+              class="tab-pane"
+              id="users"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+             <h2 class="text-center mt-3">Users</h2>
+            <button type="button" class="btn btn-primary mt-3 w-100">View Users</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Delete Users</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Update Users</button>
+            </div>
+            <div
+              class="tab-pane"
+              id="booking"
+              role="tabpanel"
+              aria-labelledby="messages-tab"
+            >
+              <h2 class="text-center mt-3">Bookings</h2>
+            <button type="button" class="btn btn-primary mt-3 w-100">View Bookings</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Delete Bookings</button>
+            <button type="button" class="btn btn-primary mt-3 w-100">Update Bookings</button>
+            </div>
+            <div
+              class="tab-pane"
+              id="settings"
+              role="tabpanel"
+              aria-labelledby="settings-tab"
+            >
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab panes -->
+    </div>
+<script src="./js/admin.js"></script>
+    <script src="./js/logout.js"></script>
+  </body>
+</html>

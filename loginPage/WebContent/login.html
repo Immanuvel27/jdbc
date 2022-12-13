@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Event Management</title>
+	<link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet" href="./css/font.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+	
+</style>
+
+<body>
+	<div class="container">
+		<!-- <h3> <span style="color:#FF0000">Hall</span>
+			<span style="color:#66CC66">booking</span>
+			<span style="color:#FF9966">and</span>
+			<span style="color:#FFCCCC">event</span>
+			<span style="color:#FF0066">management</span>
+		</h3> -->
+	 <h3>Event management System</h3>
+	 <p style="letter-spacing:15px;font-weight:bold;font-family: 'Courgette', cursive;">LOGIN </p> 
+		<form name="RegForm" action="login" method="post">
+			
+			<div>
+				<tr><td>
+				<label>Username :</label></td>
+				<td>
+				<input autocomplete="off" type="text" placeholder="Enter the Email-id" id="uname" required="required"><br />
+				</td>
+			</div>
+			<p id="nameerr" style="text-align:center;font-size: 14px;color:#FF0000;font-weight:bold"></p>
+			<div>
+				<label>Password :</label>
+				<input autocomplete="off" type="password" placeholder="Enter the password" id="pass" required="required"><br />
+				<p id="passerr" style="font-size: 14px;color:#FF0000;font-weight:bold"></p>
+			</div>
+			
+			<button type="button" id="submit" style="margin-top:3%" >SUBMIT</button><br/><br/>
+			<p style="font-size:18px">Don't have an account &nbsp<a href="Register.html">click here</a></p>
+		</form>
+
+
+		
+		
+	</div><br>
+	<!--   <script>
+		function log(){
+			var a=document.getElementById("uname").value;
+			var b=document.getElementById("pass").value;
+			var url="login?a="+a+"&b="+b;
+			const request=new XMLHttpRequest();
+			var value;
+			try {
+				alert("try");
+				request.open("POST",url,true);
+				request.send();
+				alert("djksfs");
+				request.onreadystatechange=function(){
+					if(request.readyState==4){
+						value=JSON.parse(request.responseText);
+						console.log(value);
+					}
+				}
+				
+			} catch (error) {
+				alert("unable to process");
+			}
+		}
+	</script>  -->
+	   <script src="./js/login.js"></script> 
+	<!-- <script src="log.js"></script> -->
+	</table>
+</body>
+
+</html>

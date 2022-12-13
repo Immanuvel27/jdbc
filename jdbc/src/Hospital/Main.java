@@ -90,7 +90,7 @@ public class Main {
 				wt=dt-10;
 			}
 			st1.executeUpdate("update patient set intime='"+intime+"',outtime='"+outtime+"',total_time='"+timetaken+"'"
-					+ ",waitingtime='"+wt+"',doctortime='"+dt+"' ");
+					+ ",waitingtime='"+wt+"',doctortime='"+dt+"' where id='"+id+"' ");
 			st2.executeUpdate("update statusmsg set message='"+sts+"'where phone='"+rs.getString(6)+"'");
 			show(id);
 		}else {
@@ -136,11 +136,17 @@ public class Main {
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital","root","Immanuvel*27");
 		Statement st=con.createStatement();
 		ResultSet rs=st.executeQuery("select * from patient");
-		System.out.println("_________________________________________________________________________________");
-		System.out.println("");
+		System.out.println("Patient table");
+		System.out.println("-----------------------------------------------------------------------------------------------------------");
+		System.out.println("|   id      name       in-time   out-time   total-time   doctor-time  waiting-time  phone-number          |");
+		System.out.println("-----------------------------------------------------------------------------------------------------------");
 		while(rs.next()) {
-			
+		System.out.println("    "+rs.getInt("id")+"      "+rs.getString("name")+"       "+rs.getString("intime")+""
+				+ "    "+rs.getString("outtime")+"            "+rs.getString("total_time")+"    "
+						+ "        "+rs.getString("doctortime")+"          "+rs.getString("waitingtime")+"  "
+								+ "        "+rs.getString("phone"));	
 		}
+		System.out.println("------------------------------------------------------------------------------------------------------------");
 	}
 
 
@@ -152,7 +158,7 @@ public class Main {
 		int check;
 		System.out.println("Welcome to zoho incubation");
 		do {
-			System.out.println("\n\n1:Register    2:Display   3:Exit");
+			System.out.println("\n\n1:Register    2:Display    3:show_full_detail     4:Exit");
 			System.out.println("Enter your choice");
 			check=cin.nextInt();
 			switch(check) {

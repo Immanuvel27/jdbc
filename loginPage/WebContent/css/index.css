@@ -1,0 +1,44 @@
+@import "../css/font.css";
+body {
+	/* background-image:url("https://www.wondericon.com/images/intro-background-dark.png"); */
+	background-image: url("../images/7.jpg");
+	/* background-image:url("https://wallpapercave.com/wp/wp7488412.jpg"); */
+	background-repeat: no-repeat;
+	 background-size: cover; 
+	 background-color: rgb(172, 170, 170);
+	 background-blend-mode: multiply;
+	/* background:#000 */
+}
+.container{
+   
+    width:80%;
+    margin-left:10%;
+    margin-right:10%
+}
+.container h2{
+    color:#fff;
+    text-align: center;
+    font-size:40px;
+    margin-top:9%;
+    font-family: 'Lemon', cursive;
+    letter-spacing:7px;
+}
+#inde{
+    text-align:center;
+}
+#inde button{
+    width:40%;
+    padding:2%;
+    margin:5%;
+    color:#fff;
+    text-transform: uppercase;
+    background-color: #F32B6C;
+    font-size:32px;
+    font-weight: 800;
+    letter-spacing:10px;
+    font-family: 'Shrikhand', cursive;
+}
+#inde button:hover{
+    color: #000;
+    background-color:#7fd249;
+}
