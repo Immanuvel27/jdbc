@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
+import com.mysql.cj.xdevapi.JsonArray;
+
 public class Admin extends Account{
 	Scanner cin=new Scanner(System.in);
+	
 	Events e=new Events();
 	@Override
 	boolean login() {
@@ -52,7 +55,7 @@ public class Admin extends Account{
 	public void manage() {
 		System.out.println("ACCOUNT: ADMIN");
 		int ch;
-		do {System.out.println("\n1:Event details\t2:Staff details");
+		do {System.out.println("\n1:Event details\t2:Staff details\t3:Booking details");
 		System.out.println("Enter your choice:");
 		
 		ch=cin.nextInt();
@@ -88,6 +91,28 @@ public class Admin extends Account{
 
 		break;
 		case 2:{
+			int choice;
+			do {
+			System.out.println("Staff details");
+			System.out.println("1:Insert-staff\t2:delete-staff\t3:view-staff0:Exit");
+			System.out.println("Enter your choice:");
+			choice=cin.nextInt();
+			switch (choice) {
+			case 1:
+				addStaff();
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				viewStaff();
+				break;
+
+			default:
+				break;
+			}
+			
+		} while (choice!=0);
 
 		}
 		break;
@@ -179,6 +204,8 @@ public class Admin extends Account{
 		}
 	}
 
+	
+	//update events
 	private void updateEvent() {
 		viewEvents();
 		int id;
@@ -215,6 +242,90 @@ public class Admin extends Account{
 		}
 
 
+	}
+	
+	void bookedevents(int id) {
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("select venue,date,userid,status from booking where userid=?");
+			stmt.setInt(1,id);
+			ResultSet rs=stmt.executeQuery();
+			
+			System.out.println("venue\t\tdate\t\tuserid\t\tstatus");
+			while (rs.next()) {
+//				System.out.println("'"+rs.getString("venue")+"'\t'"+rs.getString("date")+"'\t'"+rs.getInt(userid)+"'\t'"+rs.getString("status")+"'");
+				System.out.print(rs.getString("venue"));
+				System.out.print("\t");
+				System.out.print(rs.getString("date"));
+				System.out.print("\t");
+				System.out.print(rs.getInt("userid"));
+				System.out.print("\t");
+				System.out.print(rs.getString("status"));
+				System.out.println();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}		
+	}
+	
+	
+	private void addStaff() {
+		String name,phno;
+		int eid;
+		System.out.println("Enter the name:");
+		name=cin.next();
+		System.out.println("Enter the ph no:");
+		phno=cin.next();
+		System.out.println("Enter the event id:");
+		eid=cin.nextInt();
+		
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("insert into manager(name,eventid,phno) values(?,?,?)");
+			stmt.setString(1, name);
+			stmt.setInt(2, eid);
+			stmt.setString(3, phno);
+			int n=stmt.executeUpdate();
+			if(n!=0) {
+				System.out.println("Successfully inserted");
+			}else {
+				System.out.println("Not inserted");
+			}
+			
+			stmt.close();
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	private void viewStaff() {
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("select * from manager");
+			ResultSet rs=stmt.executeQuery();
+			System.out.println("Id\tName\tphoneno");
+			while (rs.next()) {
+				System.out.println(rs.getInt("mid")+"\t"+rs.getString("name")+"\t"+rs.getString("phno"));
+				
+			}
+			stmt.close();
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	private void deleteStaff() {
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 
