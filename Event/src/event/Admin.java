@@ -149,7 +149,7 @@ public class Admin extends Account{
 		}
 	}
 
-	public void deleteEvents() {
+	private void deleteEvents() {
 		viewEvents();
 		int id;
 		System.out.println("Delete Events");
@@ -174,7 +174,7 @@ public class Admin extends Account{
 		}
 	}
 
-	public void updateEvent() {
+	private void updateEvent() {
 		viewEvents();
 		int id;
 		System.out.println("Update Event");

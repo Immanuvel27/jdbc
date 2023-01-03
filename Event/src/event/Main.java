@@ -61,10 +61,12 @@ public class Main {
 							case 2:{
 								Event event=new Event();
 								event.viewEvents();
+								Booking book=new Booking();
 								int eid;
 							System.out.println("Book your event:");
 							System.out.println("Enter the id to book the events:");
 							eid=cin.nextInt();
+							book.booking(id,eid);
 								
 							}
 								break;

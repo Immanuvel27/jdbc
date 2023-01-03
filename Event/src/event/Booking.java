@@ -11,7 +11,8 @@ public class Booking extends Event{
 		this.venue = venue;
 	}
 	
-	public void booking(){
+	public void booking(int cid,int eid){
+		
 		
 	}
 }
