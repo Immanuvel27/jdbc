@@ -85,7 +85,7 @@ public class Customer extends Account {
 		object.put("phone", this.phone);
 		object.put("address", this.address);
 		
-	object.toString();
+		object.toString();
 		
 		
 		try {
@@ -155,8 +155,5 @@ public class Customer extends Account {
 		login();
 	}
 	
-	public void Bookevents() {
-		
-	}
 
 }

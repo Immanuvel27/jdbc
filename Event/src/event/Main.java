@@ -7,11 +7,12 @@ public class Main {
 	static int id;
 	public static void main(String[] args) {
 		Scanner cin=new Scanner(System.in);
-		int choice;
-		do {
 		System.out.println(" ----------------------------------");
 		System.out.println("|      Event Management system     |");
 		System.out.println(" ----------------------------------");
+		int choice;
+		do {
+		
 		System.out.println();
 		System.out.println("1:Admin\t2:Customer\t3:Staff");
 		System.out.println("Enter your choice:");
@@ -54,13 +55,13 @@ public class Main {
 							ch1=cin.nextInt();
 							switch (ch1) {
 							case 1:{
-								Event event=new Event();
-								event.viewEvents();
+								Admin ad=new Admin();
+								ad.viewEvents();
 							}
 								break;
 							case 2:{
-								Event event=new Event();
-								event.viewEvents();
+								Admin ad=new Admin();
+								ad.viewEvents();
 								Booking book=new Booking();
 								int eid;
 							System.out.println("Book your event:");

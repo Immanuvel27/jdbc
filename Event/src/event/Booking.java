@@ -1,7 +1,13 @@
 package event;
 
-public class Booking extends Event{
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class Booking{
+	Scanner cin=new Scanner(System.in);
 	public String venue;
+	public String date;
 
 	public String getVenue() {
 		return venue;
@@ -12,7 +18,28 @@ public class Booking extends Event{
 	}
 	
 	public void booking(int cid,int eid){
-		
+		System.out.println("Enter the venue:");
+		this.venue=cin.nextLine();
+		System.out.println("Enter the date(DD:MM:YYYY):");
+		this.date=cin.next();
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("insert booking into (venue,date,userid,eventid) values (?,?,?,?)");
+			stmt.setString(1, this.venue);
+			stmt.setString(2,this.date);
+			stmt.setInt(3, cid);
+			stmt.setInt(4, eid);
+			int n=stmt.executeUpdate();
+			if(n!=0) {
+				System.out.println("Requested wait for response");
+			}else {
+				System.out.println("Declined");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
 	}
 }

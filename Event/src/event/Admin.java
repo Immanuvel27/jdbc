@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Admin extends Account{
 	Scanner cin=new Scanner(System.in);
+	Events e=new Events();
 	@Override
 	boolean login() {
 		boolean status=false;
@@ -53,12 +54,13 @@ public class Admin extends Account{
 		int ch;
 		do {System.out.println("\n1:Event details\t2:Staff details");
 		System.out.println("Enter your choice:");
+		
 		ch=cin.nextInt();
 		switch (ch) {
 		case 1:
 		{
 			System.out.println("\nEvent Details\n");
-
+			
 			int chh;
 
 			do {System.out.println("\n1:Insert Events\t\t2:View Events\t3:Delete events\t4:update Event");
@@ -102,18 +104,21 @@ public class Admin extends Account{
 		System.out.println("\nInsert new events");
 		System.out.println("Enter the Event name:");
 		String ename=cin.next();
+		e.setEname(ename);
 		System.out.println("Enter the Event price:");
 		double price=cin.nextDouble();
+		e.setPrice(price);
 		System.out.println("Enter the rating:");
 		int r=cin.nextInt();
+		e.setRating(r);
 
 		try {
 			Connection con=Main.connection.dbco();
 			PreparedStatement stmt=con.prepareStatement("insert into events (ename,price,Rating) values (?,?,?)");
 			
-			stmt.setString(1, ename);
-			stmt.setDouble(2, price);
-			stmt.setInt(3, r);
+			stmt.setString(1, e.getEname());
+			stmt.setDouble(2, e.getPrice());
+			stmt.setInt(3, e.getRating());
 			int n=stmt.executeUpdate();
 			if(n!=0) {
 				System.out.println("Inserted Successfully");
@@ -130,7 +135,7 @@ public class Admin extends Account{
 	}
 
 	//View events
-	public void viewEvents() {
+	 void viewEvents() {
 		try {
 			Connection con=Main.connection.dbco();
 			PreparedStatement stmt=con.prepareStatement("select * from events");
@@ -204,10 +209,6 @@ public class Admin extends Account{
 			}else {
 				System.out.println("no records updated");
 			}
-
-
-
-
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
