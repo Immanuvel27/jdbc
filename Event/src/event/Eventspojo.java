@@ -1,6 +1,6 @@
 package event;
 
-public class Events {
+public class Eventspojo {
 private String ename;
 private double price;
 private int rating;

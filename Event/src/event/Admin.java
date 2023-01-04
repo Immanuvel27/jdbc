@@ -5,12 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-
-
 public class Admin extends Account{
 	Scanner cin=new Scanner(System.in);
+	Eventspojo e=new Eventspojo();
 	
-	Events e=new Events();
+	
 	@Override
 	boolean login() {
 		boolean status=false;
@@ -287,16 +286,7 @@ public class Admin extends Account{
 			System.out.println("id\tvenue\t\tdate\t\tuserid\t\tstatus");
 			while (rs.next()) {
 				System.out.println("'"+rs.getInt("bid")+"'\t'"+rs.getString("venue")+"'\t'"+rs.getString("date")+"'\t'"+rs.getInt("userid")+"'\t'"+rs.getString("status")+"'");
-//				System.out.print(rs.getInt("bid"));
-//				System.out.print("\t");
-//				System.out.print(rs.getString("venue"));
-//				System.out.print("\t");
-//				System.out.print(rs.getString("date"));
-//				System.out.print("\t");
-//				System.out.print(rs.getInt("userid"));
-//				System.out.print("\t");
-//				System.out.print(rs.getString("status"));
-//				System.out.println();
+
 			}
 			
 		} catch (Exception e) {
