@@ -155,6 +155,24 @@ public class Customer extends Account {
 		login();
 	}
 	
-
+void bookedsts() {
+	try {
+		Connection con=Main.connection.dbco();
+		PreparedStatement stmt=con.prepareStatement("select message,ename,status from events e,booking b where e.eid=b.eventid and userid=?");
+		stmt.setInt(1, Main.id);
+		ResultSet rs=stmt.executeQuery();
+		System.out.println("Event-name\tStatus\tMessage");
+		while(rs.next()) {
+			System.out.print(rs.getString("ename"));
+			System.out.print("\t");
+			System.out.print(rs.getString("status"));
+			System.out.print("\t");
+			System.out.println(rs.getString("message"));
+			System.out.println();
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+}
 
 }

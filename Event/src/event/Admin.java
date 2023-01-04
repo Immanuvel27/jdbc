@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-import com.mysql.cj.xdevapi.JsonArray;
+
 
 public class Admin extends Account{
 	Scanner cin=new Scanner(System.in);
@@ -94,7 +94,7 @@ public class Admin extends Account{
 			int choice;
 			do {
 			System.out.println("Staff details");
-			System.out.println("1:Insert-staff\t2:delete-staff\t3:view-staff0:Exit");
+			System.out.println("1:Insert-staff\t2:delete-staff\t3:view-staff\t0:Exit");
 			System.out.println("Enter your choice:");
 			choice=cin.nextInt();
 			switch (choice) {
@@ -102,7 +102,7 @@ public class Admin extends Account{
 				addStaff();
 				break;
 			case 2:
-				
+				deleteStaff();
 				break;
 			case 3:
 				viewStaff();
@@ -116,6 +116,13 @@ public class Admin extends Account{
 
 		}
 		break;
+		case 3:{
+			System.out.println("Bookings\n");
+			System.out.println("Approve bookings");
+			approveBooking();
+			
+		}
+			break;
 
 		default:
 			break;
@@ -270,6 +277,34 @@ public class Admin extends Account{
 		}		
 	}
 	
+	void reqevents() {
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("select bid,venue,date,userid,status from booking where status=?");
+			stmt.setString(1, "Requested");
+			ResultSet rs=stmt.executeQuery();
+			
+			System.out.println("id\tvenue\t\tdate\t\tuserid\t\tstatus");
+			while (rs.next()) {
+				System.out.println("'"+rs.getInt("bid")+"'\t'"+rs.getString("venue")+"'\t'"+rs.getString("date")+"'\t'"+rs.getInt("userid")+"'\t'"+rs.getString("status")+"'");
+//				System.out.print(rs.getInt("bid"));
+//				System.out.print("\t");
+//				System.out.print(rs.getString("venue"));
+//				System.out.print("\t");
+//				System.out.print(rs.getString("date"));
+//				System.out.print("\t");
+//				System.out.print(rs.getInt("userid"));
+//				System.out.print("\t");
+//				System.out.print(rs.getString("status"));
+//				System.out.println();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}		
+	}
+	
 	
 	private void addStaff() {
 		String name,phno;
@@ -321,11 +356,57 @@ public class Admin extends Account{
 	}
 	
 	private void deleteStaff() {
+		viewStaff();
+		int id;
+		System.out.println("\nEnter the id to delete:");
+		id=cin.nextInt();
 		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("delete from manager where mid=?");
+			stmt.setInt(1,id);
+			int n=stmt.executeUpdate();
+			if(n!=0) {
+				System.out.println("Deleted successfully");
+			}else {
+				System.out.println("Nothing Deleted");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	private void approveBooking() {
+		reqevents();
+		int id;
+		System.out.println("enter the booking id to approve");
+		id=cin.nextInt();
+		
+		try {
+			Connection con=Main.connection.dbco();
+			PreparedStatement stmt=con.prepareStatement("select eventid from booking where bid=?");
+			stmt.setInt(1, id);
+			ResultSet rs=stmt.executeQuery();
+			rs.next();
+			PreparedStatement s=con.prepareStatement("select * from manager where eventid=?");
+			s.setInt(1, rs.getInt("eventid"));
+			ResultSet rs1=s.executeQuery();
+			rs1.next();
+			PreparedStatement st=con.prepareStatement("UPDATE booking SET status = ?,message=? WHERE bid = ?");
+			st.setString(1, "Approved");
+			st.setString(2,rs1.getString("name")+" is assigned "+rs1.getString("phno"));
+			st.setInt(3, id);
+			int n=st.executeUpdate();
+			if(n!=0) {
+				System.out.println("Approved");
+			}else {
+				System.out.println("Declined");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
 	}
 
 

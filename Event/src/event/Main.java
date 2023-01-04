@@ -51,7 +51,7 @@ public class Main {
 						boolean b=c.login();
 						if(b) {
 							int ch1;
-							do {System.out.println("1:View-Events\t2:Book-events\t3:cancel-booking\t4:view-booked-event\t0:Exit");
+							do {System.out.println("1:View-Events\t2:Book-events\t3:cancel-booking\t4:view-booked-event\t5:view-booked-status\t0:Exit");
 							ch1=cin.nextInt();
 							switch (ch1) {
 							case 1:{
@@ -90,6 +90,10 @@ public class Main {
 
 							}
 							break;
+							case 5:
+								Customer customer=new Customer();
+								customer.bookedsts();
+								break;
 
 							default:
 								break;
